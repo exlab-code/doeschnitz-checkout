@@ -4,6 +4,7 @@ import type { Task } from '@/lib/types'
 import { useEditMode } from './edit-mode-provider'
 import { EditableText } from './editable-text'
 import { MediaUpload } from './media-upload'
+import { FormattedText } from './formatted-text'
 
 interface TaskDetailProps {
   task: Task
@@ -96,9 +97,10 @@ export function TaskDetail({
             </div>
           ) : (
             task.description && (
-              <p className="text-sm text-gray-600 leading-relaxed mb-6">
-                {task.description}
-              </p>
+              <FormattedText
+                text={task.description}
+                className="text-sm text-gray-600 leading-relaxed mb-6"
+              />
             )
           )}
 

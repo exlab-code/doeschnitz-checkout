@@ -16,7 +16,7 @@
       "media": [
         {
           "type": "image",
-          "url": "/media/1775557718333_57.jpg",
+          "url": "/api/media/1775557718333_57.jpg",
           "label": "1775557718333_57.jpg"
         }
       ]
@@ -28,12 +28,12 @@
       "media": [
         {
           "type": "image",
-          "url": "/media/1775557664818_IMG_0867.jpeg",
+          "url": "/api/media/1775557664818_IMG_0867.jpeg",
           "label": "1775557664818_IMG_0867.jpeg"
         },
         {
           "type": "image",
-          "url": "/media/1775557683005_IMG_0867.jpeg",
+          "url": "/api/media/1775557683005_IMG_0867.jpeg",
           "label": "1775557683005_IMG_0867.jpeg"
         }
       ]
@@ -57,7 +57,7 @@
       "media": [
         {
           "type": "image",
-          "url": "/media/1775557697232_Bildschirmfoto_2026_02_12_um_16.50.51.png",
+          "url": "/api/media/1775557697232_Bildschirmfoto_2026_02_12_um_16.50.51.png",
           "label": "1775557697232_Bildschirmfoto_2026_02_12_um_16.50.51.png"
         }
       ]

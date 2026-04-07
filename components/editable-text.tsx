@@ -35,16 +35,15 @@ export function EditableText({
     }
   }
 
-  const inputClass = `w-full bg-white border border-gray-300 focus:outline-none focus:border-black px-2 py-2 text-sm ${className ?? ''}`
-
   if (multiline) {
     return (
       <textarea
         value={localValue}
         onChange={(e) => setLocalValue(e.target.value)}
         onBlur={handleBlur}
-        className={`${inputClass} resize-none`}
-        rows={3}
+        className="w-full bg-white border border-gray-300 focus:outline-none focus:border-black px-3 py-3 text-base leading-relaxed resize-none"
+        rows={5}
+        placeholder="Beschreibung..."
       />
     )
   }
@@ -55,7 +54,8 @@ export function EditableText({
       value={localValue}
       onChange={(e) => setLocalValue(e.target.value)}
       onBlur={handleBlur}
-      className={inputClass}
+      className="w-full bg-white border border-gray-300 focus:outline-none focus:border-black px-3 py-3 text-base font-semibold"
+      placeholder="Titel..."
     />
   )
 }

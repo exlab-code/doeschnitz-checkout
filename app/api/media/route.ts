@@ -34,6 +34,6 @@ export async function POST(request: Request): Promise<NextResponse> {
   const buffer = Buffer.from(await file.arrayBuffer())
   await fs.writeFile(path.join(dir, filename), buffer)
 
-  const url = `/media/${filename}`
+  const url = `/api/media/${filename}`
   return NextResponse.json({ url, filename }, { status: 201 })
 }
