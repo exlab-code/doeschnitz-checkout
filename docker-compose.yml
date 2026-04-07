@@ -1,0 +1,15 @@
+services:
+  app:
+    build: .
+    ports:
+      - "3000:3000"
+    volumes:
+      - content-data:/app/content
+      - checkout-data:/app/data
+      - media-data:/app/public/media
+    restart: unless-stopped
+
+volumes:
+  content-data:
+  checkout-data:
+  media-data:
