@@ -9,6 +9,7 @@ import { TaskDetail } from '@/components/task-detail'
 import { useEditMode } from '@/components/edit-mode-provider'
 import { EditableText } from '@/components/editable-text'
 import { MediaUpload } from '@/components/media-upload'
+import { savePosition } from '@/lib/last-position'
 
 export default function AreaPage({ params }: { params: Promise<{ id: string }> }) {
   const { id } = use(params)
@@ -17,6 +18,10 @@ export default function AreaPage({ params }: { params: Promise<{ id: string }> }
   const [completedIds, setCompletedIds] = useState<Set<string>>(new Set())
   const [detailIndex, setDetailIndex] = useState<number | null>(null)
   const { isEditing, authorName } = useEditMode()
+
+  useEffect(() => {
+    savePosition({ areaId: id })
+  }, [id])
 
   useEffect(() => {
     const stored = localStorage.getItem(`progress-${id}`)
@@ -59,7 +64,10 @@ export default function AreaPage({ params }: { params: Promise<{ id: string }> }
   function handleOpen(taskId: string) {
     if (!area) return
     const idx = area.tasks.findIndex((t) => t.id === taskId)
-    if (idx !== -1) setDetailIndex(idx)
+    if (idx !== -1) {
+      setDetailIndex(idx)
+      savePosition({ areaId: id, detailIndex: idx })
+    }
   }
 
   async function saveTask(taskId: string, updates: Partial<Pick<Task, 'title' | 'description' | 'media'>>) {

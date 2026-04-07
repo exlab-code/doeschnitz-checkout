@@ -4,6 +4,7 @@ import Link from 'next/link'
 import { useCallback, useEffect, useState } from 'react'
 import type { AreaFile, AreaIndexItem, Task } from '@/lib/types'
 import { ProgressBar } from '@/components/progress-bar'
+import { clearPosition } from '@/lib/last-position'
 
 interface CheckoutTask {
   areaId: string
@@ -113,6 +114,7 @@ export default function SignoffPage() {
       for (const item of areas) {
         localStorage.removeItem(`progress-${item.id}`)
       }
+      clearPosition()
 
       setSubmittedName(name.trim())
       setState('submitted')
