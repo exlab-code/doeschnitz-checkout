@@ -1,0 +1,9 @@
+{
+  "name": "Haus Döschnitz — Abreise",
+  "short_name": "Abreise",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#ffffff",
+  "start_url": "/",
+  "icons": []
+}
