@@ -1,0 +1,11 @@
+{
+  "id": "bad",
+  "name": "Bad",
+  "emoji": "🚿",
+  "tasks": [
+    { "id": "handtuecher", "title": "Handtücher waschen", "description": "Benutzte Handtücher in die Waschmaschine. Frische Handtücher auslegen.", "media": [] },
+    { "id": "dusche", "title": "Dusche reinigen", "description": "Duschwanne und Armaturen abwischen. Haare aus dem Abfluss entfernen.", "media": [] },
+    { "id": "spiegel", "title": "Spiegel putzen", "description": "Spiegel mit Glasreiniger abwischen.", "media": [] },
+    { "id": "toilette", "title": "Toilette reinigen", "description": "Toilette mit Bürste reinigen. Sitz abwischen.", "media": [] }
+  ]
+}

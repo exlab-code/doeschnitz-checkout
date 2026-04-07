@@ -1,0 +1,13 @@
+{
+  "id": "kueche",
+  "name": "Küche",
+  "emoji": "🍳",
+  "tasks": [
+    { "id": "kuehlschrank", "title": "Kühlschrank ausräumen", "description": "Alle Lebensmittel mitnehmen oder entsorgen. Kühlschrank auswischen.", "media": [] },
+    { "id": "herd", "title": "Herd & Ofen reinigen", "description": "Alle Platten abwischen. Backofen kontrollieren und ggf. reinigen.", "media": [] },
+    { "id": "spuele", "title": "Spüle sauber machen", "description": "Spüle und Abtropffläche reinigen. Abfluss kontrollieren.", "media": [] },
+    { "id": "muell", "title": "Müll rausbringen", "description": "Alle Mülleimer leeren. Neue Beutel einlegen.", "media": [] },
+    { "id": "arbeitsflaechen", "title": "Arbeitsflächen wischen", "description": "Alle Oberflächen mit feuchtem Tuch abwischen.", "media": [] },
+    { "id": "boden-kueche", "title": "Boden fegen", "description": "Küchenboden fegen und ggf. wischen.", "media": [] }
+  ]
+}

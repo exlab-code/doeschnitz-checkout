@@ -1,0 +1,6 @@
+[
+  { "id": "kueche", "name": "Küche", "emoji": "🍳", "sortOrder": 0 },
+  { "id": "bad", "name": "Bad", "emoji": "🚿", "sortOrder": 1 },
+  { "id": "heizung", "name": "Heizung", "emoji": "🔥", "sortOrder": 2 },
+  { "id": "garten", "name": "Garten", "emoji": "🌿", "sortOrder": 3 }
+]

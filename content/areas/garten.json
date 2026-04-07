@@ -1,0 +1,12 @@
+{
+  "id": "garten",
+  "name": "Garten",
+  "emoji": "🌿",
+  "tasks": [
+    { "id": "gartenmoebel", "title": "Gartenmöbel verräumen", "description": "Stühle und Tische unter das Vordach stellen oder in den Schuppen.", "media": [] },
+    { "id": "grill", "title": "Grill reinigen", "description": "Grillrost reinigen. Asche entsorgen. Abdeckung drauf.", "media": [] },
+    { "id": "wasseranschluss", "title": "Wasseranschluss prüfen", "description": "Außenwasserhahn zudrehen (besonders im Winter).", "media": [] },
+    { "id": "tor", "title": "Tor & Zaun kontrollieren", "description": "Gartentor schließen. Zaun auf Schäden prüfen.", "media": [] },
+    { "id": "licht-aussen", "title": "Außenbeleuchtung aus", "description": "Alle Außenlichter ausschalten.", "media": [] }
+  ]
+}

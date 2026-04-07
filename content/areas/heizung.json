@@ -1,0 +1,10 @@
+{
+  "id": "heizung",
+  "name": "Heizung",
+  "emoji": "🔥",
+  "tasks": [
+    { "id": "thermostat", "title": "Thermostat zurückstellen", "description": "Alle Thermostate auf Frostschutz (Schneeflocke) stellen.", "media": [] },
+    { "id": "fenster", "title": "Fenster schließen", "description": "Alle Fenster im Haus schließen und verriegeln.", "media": [] },
+    { "id": "heizraum", "title": "Heizraum kontrollieren", "description": "Heizungsanlage kontrollieren. Keine Fehlermeldungen am Display.", "media": [] }
+  ]
+}
