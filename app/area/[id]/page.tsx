@@ -14,6 +14,7 @@ export default function AreaPage({ params }: { params: Promise<{ id: string }> }
 
   const [area, setArea] = useState<AreaFile | null>(null)
   const [completedIds, setCompletedIds] = useState<Set<string>>(new Set())
+  const [expandedId, setExpandedId] = useState<string | null>(null)
   const { isEditing, authorName } = useEditMode()
 
   useEffect(() => {
@@ -91,7 +92,6 @@ export default function AreaPage({ params }: { params: Promise<{ id: string }> }
 
   // Auto-expand first incomplete task initially
   const firstIncompleteId = area.tasks.find((t) => !completedIds.has(t.id))?.id ?? null
-  const [expandedId, setExpandedId] = useState<string | null>(null)
   const activeExpandedId = expandedId ?? firstIncompleteId
 
   function handleTap(taskId: string) {
