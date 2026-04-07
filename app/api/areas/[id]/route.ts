@@ -1,12 +1,17 @@
 import { NextResponse } from 'next/server'
 
-import { getAreas, getArea, saveArea, saveAreas, deleteAreaFile } from '@/lib/content'
+import { getAreas, getArea, saveArea, saveAreas, deleteAreaFile, validateId } from '@/lib/content'
 import { appendChange } from '@/lib/changelog'
 
 type Params = { params: Promise<{ id: string }> }
 
 export async function GET(_request: Request, { params }: Params): Promise<NextResponse> {
   const { id } = await params
+  try {
+    validateId(id)
+  } catch {
+    return NextResponse.json({ error: 'Invalid id' }, { status: 400 })
+  }
   try {
     const area = await getArea(id)
     return NextResponse.json(area)
@@ -18,12 +23,25 @@ export async function GET(_request: Request, { params }: Params): Promise<NextRe
 export async function PUT(request: Request, { params }: Params): Promise<NextResponse> {
   const { id } = await params
   try {
+    validateId(id)
+  } catch {
+    return NextResponse.json({ error: 'Invalid id' }, { status: 400 })
+  }
+  try {
     const area = await getArea(id)
     const body = await request.json() as {
       name?: string
       emoji?: string
       tasks?: typeof area.tasks
       author?: string
+    }
+
+    if (
+      (body.name !== undefined && typeof body.name !== 'string') ||
+      (body.emoji !== undefined && typeof body.emoji !== 'string') ||
+      (body.author !== undefined && typeof body.author !== 'string')
+    ) {
+      return NextResponse.json({ error: 'Invalid request body' }, { status: 400 })
     }
 
     const updated = {
@@ -65,6 +83,11 @@ export async function PUT(request: Request, { params }: Params): Promise<NextRes
 
 export async function DELETE(_request: Request, { params }: Params): Promise<NextResponse> {
   const { id } = await params
+  try {
+    validateId(id)
+  } catch {
+    return NextResponse.json({ error: 'Invalid id' }, { status: 400 })
+  }
   try {
     await deleteAreaFile(id)
     const areas = await getAreas()

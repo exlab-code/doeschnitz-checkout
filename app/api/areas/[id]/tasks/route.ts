@@ -1,6 +1,6 @@
 import { NextResponse } from 'next/server'
 
-import { getArea, saveArea } from '@/lib/content'
+import { getArea, saveArea, validateId } from '@/lib/content'
 import { appendChange } from '@/lib/changelog'
 
 type Params = { params: Promise<{ id: string }> }
@@ -8,12 +8,25 @@ type Params = { params: Promise<{ id: string }> }
 export async function POST(request: Request, { params }: Params): Promise<NextResponse> {
   const { id } = await params
   try {
+    validateId(id)
+  } catch {
+    return NextResponse.json({ error: 'Invalid id' }, { status: 400 })
+  }
+  try {
     const area = await getArea(id)
     const body = await request.json() as {
       title?: string
       description?: string
       media?: unknown[]
       author?: string
+    }
+
+    if (
+      (body.title !== undefined && typeof body.title !== 'string') ||
+      (body.description !== undefined && typeof body.description !== 'string') ||
+      (body.author !== undefined && typeof body.author !== 'string')
+    ) {
+      return NextResponse.json({ error: 'Invalid request body' }, { status: 400 })
     }
 
     const taskId = crypto.randomUUID().slice(0, 8)

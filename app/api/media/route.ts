@@ -3,6 +3,8 @@ import path from 'path'
 
 import { NextResponse } from 'next/server'
 
+const MAX_FILE_SIZE = 50 * 1024 * 1024 // 50 MB
+
 export function mediaDir(): string {
   return process.env.MEDIA_DIR || path.join(process.cwd(), 'public', 'media')
 }
@@ -13,6 +15,14 @@ export async function POST(request: Request): Promise<NextResponse> {
 
   if (!file || !(file instanceof File)) {
     return NextResponse.json({ error: 'No file provided' }, { status: 400 })
+  }
+
+  if (!file.type.startsWith('image/') && !file.type.startsWith('video/')) {
+    return NextResponse.json({ error: 'Only image and video files are allowed' }, { status: 400 })
+  }
+
+  if (file.size > MAX_FILE_SIZE) {
+    return NextResponse.json({ error: 'File exceeds 50 MB limit' }, { status: 400 })
   }
 
   const sanitizedName = file.name.replace(/[^a-zA-Z0-9.]/g, '_')

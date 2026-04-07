@@ -39,7 +39,7 @@ export default function SignoffPage() {
             const area: AreaFile = await areaRes.json()
             tasksTotal += area.tasks.length
             const stored = localStorage.getItem(`progress-${item.id}`)
-            tasksCompleted += stored ? parseInt(stored, 10) : 0
+            tasksCompleted += stored ? JSON.parse(stored).length : 0
           } catch {
             // skip area on error
           }

@@ -81,16 +81,16 @@ export default function AreaPage({ params }: { params: Promise<{ id: string }> }
 
   if (!area) {
     return (
-      <main className="max-w-sm mx-auto p-4">
+      <div className="max-w-sm mx-auto p-4">
         <p className="text-xs text-gray-400">Lädt…</p>
-      </main>
+      </div>
     )
   }
 
   const allCompleted = area.tasks.length > 0 && area.tasks.every((t) => completedIds.has(t.id))
 
   return (
-    <main className="max-w-sm mx-auto p-4">
+    <div className="max-w-sm mx-auto p-4">
       <Link href="/" className="text-xs text-gray-500 hover:text-black">
         ← zurück
       </Link>
@@ -192,6 +192,6 @@ export default function AreaPage({ params }: { params: Promise<{ id: string }> }
           </Link>
         </div>
       )}
-    </main>
+    </div>
   )
 }

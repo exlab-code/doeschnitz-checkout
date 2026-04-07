@@ -1,12 +1,18 @@
 import { NextResponse } from 'next/server'
 
-import { getArea, saveArea } from '@/lib/content'
+import { getArea, saveArea, validateId } from '@/lib/content'
 import { appendChange } from '@/lib/changelog'
 
 type Params = { params: Promise<{ id: string; taskId: string }> }
 
 export async function PUT(request: Request, { params }: Params): Promise<NextResponse> {
   const { id, taskId } = await params
+  try {
+    validateId(id)
+    validateId(taskId)
+  } catch {
+    return NextResponse.json({ error: 'Invalid id' }, { status: 400 })
+  }
   try {
     const area = await getArea(id)
     const task = area.tasks.find((t) => t.id === taskId)
@@ -58,6 +64,12 @@ export async function PUT(request: Request, { params }: Params): Promise<NextRes
 
 export async function DELETE(_request: Request, { params }: Params): Promise<NextResponse> {
   const { id, taskId } = await params
+  try {
+    validateId(id)
+    validateId(taskId)
+  } catch {
+    return NextResponse.json({ error: 'Invalid id' }, { status: 400 })
+  }
   try {
     const area = await getArea(id)
     const task = area.tasks.find((t) => t.id === taskId)
