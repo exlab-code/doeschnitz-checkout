@@ -89,6 +89,15 @@ export default function AreaPage({ params }: { params: Promise<{ id: string }> }
 
   const allCompleted = area.tasks.length > 0 && area.tasks.every((t) => completedIds.has(t.id))
 
+  // Auto-expand first incomplete task initially
+  const firstIncompleteId = area.tasks.find((t) => !completedIds.has(t.id))?.id ?? null
+  const [expandedId, setExpandedId] = useState<string | null>(null)
+  const activeExpandedId = expandedId ?? firstIncompleteId
+
+  function handleTap(taskId: string) {
+    setExpandedId((prev) => (prev === taskId ? null : taskId))
+  }
+
   return (
     <div className="max-w-sm mx-auto p-4">
       <Link href="/" className="text-xs text-gray-500 hover:text-black">
@@ -154,20 +163,14 @@ export default function AreaPage({ params }: { params: Promise<{ id: string }> }
             )
           }
 
-          let status: 'completed' | 'current' | 'upcoming'
-          if (completedIds.has(task.id)) {
-            status = 'completed'
-          } else {
-            const firstIncomplete = area.tasks.find((t) => !completedIds.has(t.id))
-            status = firstIncomplete?.id === task.id ? 'current' : 'upcoming'
-          }
-
           return (
             <TaskItem
               key={task.id}
               task={task}
-              status={status}
+              isCompleted={completedIds.has(task.id)}
+              isExpanded={activeExpandedId === task.id}
               onToggle={handleToggle}
+              onTap={handleTap}
             />
           )
         })}

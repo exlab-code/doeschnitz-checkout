@@ -5,15 +5,14 @@ import { MediaPlayer } from './media-player'
 
 interface TaskItemProps {
   task: Task
-  status: 'completed' | 'current' | 'upcoming'
+  isCompleted: boolean
+  isExpanded: boolean
   onToggle: (taskId: string) => void
+  onTap: (taskId: string) => void
 }
 
-export function TaskItem({ task, status, onToggle }: TaskItemProps) {
-  const isCompleted = status === 'completed'
-  const isCurrent = status === 'current'
-
-  const borderClass = isCurrent
+export function TaskItem({ task, isCompleted, isExpanded, onToggle, onTap }: TaskItemProps) {
+  const borderClass = isExpanded
     ? 'border-2 border-black'
     : isCompleted
       ? 'border border-gray-200 bg-gray-50'
@@ -21,11 +20,17 @@ export function TaskItem({ task, status, onToggle }: TaskItemProps) {
 
   return (
     <div className={`p-3 ${borderClass}`}>
-      <div className="flex items-center gap-2">
+      <div
+        className="flex items-center gap-2 cursor-pointer"
+        onClick={() => onTap(task.id)}
+      >
         <button
           role="checkbox"
           aria-checked={isCompleted}
-          onClick={() => onToggle(task.id)}
+          onClick={(e) => {
+            e.stopPropagation()
+            onToggle(task.id)
+          }}
           className={`w-4 h-4 border-2 flex items-center justify-center shrink-0 ${
             isCompleted
               ? 'bg-black border-black text-white'
@@ -42,7 +47,7 @@ export function TaskItem({ task, status, onToggle }: TaskItemProps) {
           {task.title}
         </span>
       </div>
-      {isCurrent && (
+      {isExpanded && (
         <div className="ml-6 mt-2">
           {task.description && (
             <p className="text-[10px] text-gray-600 mb-2">{task.description}</p>
