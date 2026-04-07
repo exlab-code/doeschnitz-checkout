@@ -33,7 +33,7 @@ export default function Home() {
               const area: AreaFile = await areaRes.json()
               const taskCount = area.tasks.length
               const stored = localStorage.getItem(`progress-${item.id}`)
-              const completedCount = stored ? parseInt(stored, 10) : 0
+              const completedCount = stored ? JSON.parse(stored).length : 0
               return { id: item.id, name: item.name, emoji: item.emoji, taskCount, completedCount }
             } catch {
               return { id: item.id, name: item.name, emoji: item.emoji, taskCount: 0, completedCount: 0 }
