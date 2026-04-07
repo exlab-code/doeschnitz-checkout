@@ -70,6 +70,15 @@ export default function Home() {
 
       <div className="mt-6">
         <Link
+          href="/signoff"
+          className="block text-center text-xs font-semibold px-4 py-2 border border-gray-300 text-gray-500 hover:border-black hover:text-black transition-colors"
+        >
+          Abreise bestätigen
+        </Link>
+      </div>
+
+      <div className="mt-3 text-center">
+        <Link
           href="/log"
           className="text-[10px] text-gray-400 uppercase tracking-wider"
         >

@@ -198,13 +198,17 @@ export default function AreaPage({ params }: { params: Promise<{ id: string }> }
         </button>
       )}
 
-      {!isEditing && allCompleted && (
+      {!isEditing && (
         <div className="mt-6">
           <Link
             href="/signoff"
-            className="block text-center text-sm font-semibold border-2 border-black px-4 py-2 hover:bg-black hover:text-white transition-colors"
+            className={`block text-center text-xs font-semibold px-4 py-2 transition-colors ${
+              allCompleted
+                ? 'border-2 border-black hover:bg-black hover:text-white'
+                : 'border border-gray-300 text-gray-500 hover:border-black hover:text-black'
+            }`}
           >
-            Alle erledigt — Abreise bestätigen
+            {allCompleted ? 'Alle erledigt — Abreise bestätigen' : 'Abreise bestätigen'}
           </Link>
         </div>
       )}

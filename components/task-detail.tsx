@@ -33,9 +33,9 @@ export function TaskDetail({
         <div className="max-w-md mx-auto flex items-center justify-between">
           <button
             onClick={onClose}
-            className="text-xs text-gray-500 hover:text-black"
+            className="text-xs font-semibold px-3 py-1.5 border border-gray-300 hover:border-black hover:text-black text-gray-500"
           >
-            ← zurück
+            ← zur Liste
           </button>
           <span className="text-[10px] text-gray-400">
             {currentIndex + 1} / {totalTasks}
