@@ -83,7 +83,7 @@ export function MediaUpload({ onUploaded }: MediaUploadProps) {
 
   return (
     <div>
-      <label className={`flex items-center justify-center border border-dashed border-gray-400 px-3 py-3 text-sm cursor-pointer transition-colors ${
+      <label className={`flex items-center justify-center border border-dashed border-gray-400 px-3 py-3 text-sm cursor-pointer transition-colors min-h-[44px] ${
         uploading ? 'text-gray-400 cursor-wait' : 'text-gray-500 hover:border-black hover:text-black'
       }`}>
         {status || '+ Foto / Video hinzufügen'}

@@ -98,7 +98,7 @@ export default function Home() {
         <div className="mt-4 text-center">
           <Link
             href="/log"
-            className="text-xs text-gray-400 uppercase tracking-wider"
+            className="inline-flex items-center justify-center text-xs text-gray-400 uppercase tracking-wider min-h-[44px] px-3"
           >
             Letzte Abreisen
           </Link>
@@ -109,7 +109,7 @@ export default function Home() {
         <div className="max-w-md mx-auto">
           <Link
             href="/signoff"
-            className="block text-center text-sm font-semibold px-4 py-2.5 border-2 border-black hover:bg-black hover:text-white transition-colors"
+            className="flex items-center justify-center text-center text-sm font-semibold px-4 py-2.5 border-2 border-black hover:bg-black hover:text-white transition-colors min-h-[44px]"
           >
             Checkout
           </Link>

@@ -40,7 +40,7 @@ export function TaskDetail({
         <div className="max-w-md mx-auto flex items-center justify-between">
           <button
             onClick={onClose}
-            className="text-sm font-semibold px-3 py-2 border border-gray-300 hover:border-black hover:text-black text-gray-500"
+            className="text-sm font-semibold px-3 py-2 border border-gray-300 hover:border-black hover:text-black text-gray-500 min-h-[44px]"
           >
             ← zur Liste
           </button>
@@ -59,7 +59,7 @@ export function TaskDetail({
               role="checkbox"
               aria-checked={isCompleted}
               onClick={() => onToggle(task.id)}
-              className={`w-7 h-7 border-2 flex items-center justify-center shrink-0 mt-0.5 ${
+              className={`w-7 h-7 border-2 flex items-center justify-center shrink-0 mt-0.5 min-w-[44px] min-h-[44px] ${
                 isCompleted
                   ? 'bg-black border-black text-white'
                   : 'border-black'
@@ -159,7 +159,7 @@ export function TaskDetail({
           <button
             onClick={onPrev}
             disabled={!hasPrev}
-            className={`text-sm font-semibold px-4 py-2.5 border-2 ${
+            className={`text-sm font-semibold px-4 py-2.5 border-2 min-h-[44px] ${
               hasPrev
                 ? 'border-black hover:bg-black hover:text-white'
                 : 'border-gray-200 text-gray-300 cursor-not-allowed'
@@ -170,7 +170,7 @@ export function TaskDetail({
           <button
             onClick={onNext}
             disabled={!hasNext}
-            className={`text-sm font-semibold px-4 py-2.5 border-2 ${
+            className={`text-sm font-semibold px-4 py-2.5 border-2 min-h-[44px] ${
               hasNext
                 ? 'border-black hover:bg-black hover:text-white'
                 : 'border-gray-200 text-gray-300 cursor-not-allowed'

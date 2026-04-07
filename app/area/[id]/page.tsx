@@ -162,7 +162,7 @@ export default function AreaPage({ params }: { params: Promise<{ id: string }> }
                   <button
                     onClick={() => deleteTask(task.id)}
                     aria-label="Aufgabe löschen"
-                    className="text-gray-400 hover:text-red-600 text-sm shrink-0 transition-colors"
+                    className="text-gray-400 hover:text-red-600 text-sm shrink-0 transition-colors min-w-[44px] min-h-[44px] flex items-center justify-center"
                   >
                     ✕
                   </button>
@@ -202,7 +202,7 @@ export default function AreaPage({ params }: { params: Promise<{ id: string }> }
       {isEditing && (
         <button
           onClick={addTask}
-          className="mt-4 w-full text-sm border border-dashed border-gray-400 px-4 py-2 text-gray-500 hover:border-black hover:text-black transition-colors"
+          className="mt-4 w-full text-sm border border-dashed border-gray-400 px-4 py-2 text-gray-500 hover:border-black hover:text-black transition-colors min-h-[44px]"
         >
           + Aufgabe hinzufügen
         </button>
@@ -215,7 +215,7 @@ export default function AreaPage({ params }: { params: Promise<{ id: string }> }
         <div className="max-w-md mx-auto">
           <Link
             href="/signoff"
-            className="block text-center text-sm font-semibold px-4 py-2.5 border-2 border-black hover:bg-black hover:text-white transition-colors"
+            className="flex items-center justify-center text-center text-sm font-semibold px-4 py-2.5 border-2 border-black hover:bg-black hover:text-white transition-colors min-h-[44px]"
           >
             Checkout
           </Link>

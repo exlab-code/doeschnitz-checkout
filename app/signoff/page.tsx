@@ -134,7 +134,7 @@ export default function SignoffPage() {
         <p className="text-sm text-gray-400 mt-2">Abreise wurde erfasst.</p>
         <Link
           href="/"
-          className="inline-block mt-6 border border-gray-300 px-4 py-2 text-sm hover:border-black transition-colors"
+          className="inline-flex items-center mt-6 border border-gray-300 px-4 py-2 text-sm hover:border-black transition-colors min-h-[44px]"
         >
           Zurück zum Start
         </Link>
@@ -161,7 +161,7 @@ export default function SignoffPage() {
 
   return (
     <div className="pb-48">
-      <Link href="/" className="text-sm text-gray-500 hover:text-black">
+      <Link href="/" className="inline-flex items-center text-sm text-gray-500 hover:text-black min-h-[44px]">
         ← zurück
       </Link>
 
@@ -197,7 +197,7 @@ export default function SignoffPage() {
                         role="checkbox"
                         aria-checked={false}
                         onClick={() => toggleTask(t.areaId, t.task.id)}
-                        className="w-6 h-6 border-2 border-black flex items-center justify-center shrink-0"
+                        className="w-7 h-7 border-2 border-black flex items-center justify-center shrink-0 min-w-[44px] min-h-[44px]"
                       />
                       <span className="text-sm">{t.task.title}</span>
                     </div>
@@ -229,7 +229,7 @@ export default function SignoffPage() {
             <button
               onClick={handleSubmit}
               disabled={!name.trim() || isSubmitting}
-              className="border-2 border-black px-4 py-2.5 text-sm font-semibold hover:bg-black hover:text-white disabled:opacity-30 transition-colors shrink-0"
+              className="border-2 border-black px-4 py-2.5 text-sm font-semibold hover:bg-black hover:text-white disabled:opacity-30 transition-colors shrink-0 min-h-[44px]"
             >
               {isSubmitting ? '...' : 'Bestätigen'}
             </button>
