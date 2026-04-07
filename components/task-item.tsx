@@ -28,7 +28,7 @@ export function TaskItem({ task, isCompleted, onToggle, onOpen }: TaskItemProps)
             e.stopPropagation()
             onToggle(task.id)
           }}
-          className={`w-7 h-7 border-2 flex items-center justify-center shrink-0 min-w-[44px] min-h-[44px] ${
+          className={`w-6 h-6 border-2 flex items-center justify-center shrink-0 p-0 m-0 ${
             isCompleted
               ? 'bg-black border-black text-white'
               : 'border-black'

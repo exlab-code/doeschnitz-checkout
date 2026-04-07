@@ -94,7 +94,7 @@ export function TaskDetail({
                 role="checkbox"
                 aria-checked={isCompleted}
                 onClick={() => onToggle(task.id)}
-                className={`w-7 h-7 border-2 flex items-center justify-center shrink-0 mt-0.5 min-w-[44px] min-h-[44px] ${
+                className={`w-6 h-6 border-2 flex items-center justify-center shrink-0 mt-0.5 ${
                   isCompleted
                     ? 'bg-black border-black text-white'
                     : 'border-black'

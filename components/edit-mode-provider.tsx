@@ -6,6 +6,9 @@ interface EditModeContextValue {
   isEditing: boolean
   authorName: string
   toggleEditing: () => void
+  showNamePrompt: boolean
+  submitName: (name: string) => void
+  cancelNamePrompt: () => void
 }
 
 const EditModeContext = createContext<EditModeContextValue | null>(null)
@@ -13,6 +16,7 @@ const EditModeContext = createContext<EditModeContextValue | null>(null)
 export function EditModeProvider({ children }: { children: ReactNode }) {
   const [isEditing, setIsEditing] = useState(false)
   const [authorName, setAuthorName] = useState('')
+  const [showNamePrompt, setShowNamePrompt] = useState(false)
 
   useEffect(() => {
     const stored = localStorage.getItem('edit-author')
@@ -27,21 +31,39 @@ export function EditModeProvider({ children }: { children: ReactNode }) {
       return
     }
 
-    let name = localStorage.getItem('edit-author') ?? ''
+    const name = localStorage.getItem('edit-author') ?? ''
     if (!name) {
-      const prompted = prompt('Dein Name (für das Änderungsprotokoll):')
-      if (prompted === null) return
-      name = prompted.trim()
-      if (!name) return
-      localStorage.setItem('edit-author', name)
-      setAuthorName(name)
+      setShowNamePrompt(true)
+      return
     }
 
     setIsEditing(true)
   }
 
+  function submitName(name: string) {
+    const trimmed = name.trim()
+    if (!trimmed) return
+    localStorage.setItem('edit-author', trimmed)
+    setAuthorName(trimmed)
+    setShowNamePrompt(false)
+    setIsEditing(true)
+  }
+
+  function cancelNamePrompt() {
+    setShowNamePrompt(false)
+  }
+
   return (
-    <EditModeContext.Provider value={{ isEditing, authorName, toggleEditing }}>
+    <EditModeContext.Provider
+      value={{
+        isEditing,
+        authorName,
+        toggleEditing,
+        showNamePrompt,
+        submitName,
+        cancelNamePrompt,
+      }}
+    >
       {children}
     </EditModeContext.Provider>
   )

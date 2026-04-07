@@ -197,7 +197,7 @@ export default function SignoffPage() {
                         role="checkbox"
                         aria-checked={false}
                         onClick={() => toggleTask(t.areaId, t.task.id)}
-                        className="w-7 h-7 border-2 border-black flex items-center justify-center shrink-0 min-w-[44px] min-h-[44px]"
+                        className="w-6 h-6 border-2 border-black flex items-center justify-center shrink-0"
                       />
                       <span className="text-sm">{t.task.title}</span>
                     </div>
