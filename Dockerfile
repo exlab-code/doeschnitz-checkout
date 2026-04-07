@@ -22,11 +22,15 @@ COPY --from=builder /app/public ./public
 COPY --from=builder /app/.next/standalone ./
 COPY --from=builder /app/.next/static ./.next/static
 
-COPY --from=builder /app/content ./content
-RUN chown -R nextjs:nodejs /app/content
+# Bake content + media as seed data (copied to volumes on first start)
+COPY --from=builder /app/content ./content-seed
+COPY --from=builder /app/public/media ./media-seed
 
-RUN mkdir -p /app/data && chown nextjs:nodejs /app/data
-RUN mkdir -p /app/public/media && chown nextjs:nodejs /app/public/media
+# Create writable directories for volumes
+RUN mkdir -p /app/content /app/data /app/public/media \
+  && chown -R nextjs:nodejs /app/content /app/content-seed /app/data /app/public/media /app/media-seed
+
+COPY --chown=nextjs:nodejs docker-entrypoint.sh ./
 
 ENV CONTENT_DIR=/app/content
 ENV DATA_DIR=/app/data
@@ -38,4 +42,4 @@ EXPOSE 3000
 ENV PORT=3000
 ENV HOSTNAME="0.0.0.0"
 
-CMD ["node", "server.js"]
+CMD ["./docker-entrypoint.sh"]
