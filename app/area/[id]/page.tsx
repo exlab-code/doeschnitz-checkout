@@ -5,6 +5,7 @@ import Link from 'next/link'
 import type { AreaFile, Task } from '@/lib/types'
 import { ProgressBar } from '@/components/progress-bar'
 import { TaskItem } from '@/components/task-item'
+import { TaskDetail } from '@/components/task-detail'
 import { useEditMode } from '@/components/edit-mode-provider'
 import { EditableText } from '@/components/editable-text'
 import { MediaUpload } from '@/components/media-upload'
@@ -14,7 +15,7 @@ export default function AreaPage({ params }: { params: Promise<{ id: string }> }
 
   const [area, setArea] = useState<AreaFile | null>(null)
   const [completedIds, setCompletedIds] = useState<Set<string>>(new Set())
-  const [expandedId, setExpandedId] = useState<string | null>(null)
+  const [detailIndex, setDetailIndex] = useState<number | null>(null)
   const { isEditing, authorName } = useEditMode()
 
   useEffect(() => {
@@ -35,9 +36,7 @@ export default function AreaPage({ params }: { params: Promise<{ id: string }> }
     fetch(`/api/areas/${id}`)
       .then((res) => res.json())
       .then((data: AreaFile) => setArea(data))
-      .catch(() => {
-        // silently ignore fetch errors for now
-      })
+      .catch(() => {})
   }, [id])
 
   useEffect(() => {
@@ -55,6 +54,12 @@ export default function AreaPage({ params }: { params: Promise<{ id: string }> }
       localStorage.setItem(`progress-${id}`, JSON.stringify(Array.from(next)))
       return next
     })
+  }
+
+  function handleOpen(taskId: string) {
+    if (!area) return
+    const idx = area.tasks.findIndex((t) => t.id === taskId)
+    if (idx !== -1) setDetailIndex(idx)
   }
 
   async function saveTask(taskId: string, updates: Partial<Pick<Task, 'title' | 'description' | 'media'>>) {
@@ -82,7 +87,7 @@ export default function AreaPage({ params }: { params: Promise<{ id: string }> }
 
   if (!area) {
     return (
-      <div className="max-w-sm mx-auto p-4">
+      <div>
         <p className="text-xs text-gray-400">Lädt…</p>
       </div>
     )
@@ -90,16 +95,25 @@ export default function AreaPage({ params }: { params: Promise<{ id: string }> }
 
   const allCompleted = area.tasks.length > 0 && area.tasks.every((t) => completedIds.has(t.id))
 
-  // Auto-expand first incomplete task initially
-  const firstIncompleteId = area.tasks.find((t) => !completedIds.has(t.id))?.id ?? null
-  const activeExpandedId = expandedId ?? firstIncompleteId
-
-  function handleTap(taskId: string) {
-    setExpandedId((prev) => (prev === taskId ? null : taskId))
+  // Detail view overlay
+  if (detailIndex !== null && area.tasks[detailIndex]) {
+    const task = area.tasks[detailIndex]
+    return (
+      <TaskDetail
+        task={task}
+        isCompleted={completedIds.has(task.id)}
+        currentIndex={detailIndex}
+        totalTasks={area.tasks.length}
+        onToggle={handleToggle}
+        onClose={() => setDetailIndex(null)}
+        onPrev={() => setDetailIndex((i) => Math.max(0, (i ?? 0) - 1))}
+        onNext={() => setDetailIndex((i) => Math.min(area.tasks.length - 1, (i ?? 0) + 1))}
+      />
+    )
   }
 
   return (
-    <div className="max-w-sm mx-auto p-4">
+    <div>
       <Link href="/" className="text-xs text-gray-500 hover:text-black">
         ← zurück
       </Link>
@@ -168,9 +182,8 @@ export default function AreaPage({ params }: { params: Promise<{ id: string }> }
               key={task.id}
               task={task}
               isCompleted={completedIds.has(task.id)}
-              isExpanded={activeExpandedId === task.id}
               onToggle={handleToggle}
-              onTap={handleTap}
+              onOpen={handleOpen}
             />
           )
         })}

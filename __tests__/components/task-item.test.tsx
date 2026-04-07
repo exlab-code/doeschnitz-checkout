@@ -10,58 +10,53 @@ const task: Task = {
   media: [],
 }
 
+const taskWithMedia: Task = {
+  ...task,
+  media: [{ type: 'image', url: '/media/test.jpg', label: 'test' }],
+}
+
 describe('TaskItem', () => {
   it('renders task title', () => {
-    render(<TaskItem task={task} isCompleted={false} isExpanded={false} onToggle={vi.fn()} onTap={vi.fn()} />)
+    render(<TaskItem task={task} isCompleted={false} onToggle={vi.fn()} onOpen={vi.fn()} />)
     expect(screen.getByText('Clean the kitchen')).toBeDefined()
   })
 
-  it('shows description when expanded', () => {
-    render(<TaskItem task={task} isCompleted={false} isExpanded={true} onToggle={vi.fn()} onTap={vi.fn()} />)
-    expect(screen.getByText('Wipe counters and clean the sink')).toBeDefined()
-  })
-
-  it('does not show description when collapsed', () => {
-    render(<TaskItem task={task} isCompleted={false} isExpanded={false} onToggle={vi.fn()} onTap={vi.fn()} />)
-    expect(screen.queryByText('Wipe counters and clean the sink')).toBeNull()
-  })
-
   it('shows strikethrough when completed', () => {
-    const { container } = render(<TaskItem task={task} isCompleted={true} isExpanded={false} onToggle={vi.fn()} onTap={vi.fn()} />)
-    const title = container.querySelector('.line-through')
-    expect(title).not.toBeNull()
+    const { container } = render(<TaskItem task={task} isCompleted={true} onToggle={vi.fn()} onOpen={vi.fn()} />)
+    expect(container.querySelector('.line-through')).not.toBeNull()
   })
 
   it('does not show strikethrough when not completed', () => {
-    const { container } = render(<TaskItem task={task} isCompleted={false} isExpanded={true} onToggle={vi.fn()} onTap={vi.fn()} />)
-    const title = container.querySelector('.line-through')
-    expect(title).toBeNull()
+    const { container } = render(<TaskItem task={task} isCompleted={false} onToggle={vi.fn()} onOpen={vi.fn()} />)
+    expect(container.querySelector('.line-through')).toBeNull()
   })
 
   it('calls onToggle when checkbox clicked', () => {
     const onToggle = vi.fn()
-    render(<TaskItem task={task} isCompleted={false} isExpanded={false} onToggle={onToggle} onTap={vi.fn()} />)
-    const checkbox = screen.getByRole('checkbox')
-    fireEvent.click(checkbox)
+    render(<TaskItem task={task} isCompleted={false} onToggle={onToggle} onOpen={vi.fn()} />)
+    fireEvent.click(screen.getByRole('checkbox'))
     expect(onToggle).toHaveBeenCalledWith('task-1')
   })
 
-  it('calls onTap when task row clicked', () => {
-    const onTap = vi.fn()
-    render(<TaskItem task={task} isCompleted={false} isExpanded={false} onToggle={vi.fn()} onTap={onTap} />)
-    fireEvent.click(screen.getByText('Clean the kitchen'))
-    expect(onTap).toHaveBeenCalledWith('task-1')
+  it('shows info pill when task has description', () => {
+    render(<TaskItem task={task} isCompleted={false} onToggle={vi.fn()} onOpen={vi.fn()} />)
+    expect(screen.getByText('info')).toBeDefined()
+  })
+
+  it('shows media count pill when task has media', () => {
+    render(<TaskItem task={taskWithMedia} isCompleted={false} onToggle={vi.fn()} onOpen={vi.fn()} />)
+    expect(screen.getByText('1 📷')).toBeDefined()
+  })
+
+  it('calls onOpen when pill clicked', () => {
+    const onOpen = vi.fn()
+    render(<TaskItem task={task} isCompleted={false} onToggle={vi.fn()} onOpen={onOpen} />)
+    fireEvent.click(screen.getByText('info'))
+    expect(onOpen).toHaveBeenCalledWith('task-1')
   })
 
   it('checkbox is aria-checked true when completed', () => {
-    render(<TaskItem task={task} isCompleted={true} isExpanded={false} onToggle={vi.fn()} onTap={vi.fn()} />)
-    const checkbox = screen.getByRole('checkbox')
-    expect(checkbox.getAttribute('aria-checked')).toBe('true')
-  })
-
-  it('checkbox is aria-checked false when not completed', () => {
-    render(<TaskItem task={task} isCompleted={false} isExpanded={false} onToggle={vi.fn()} onTap={vi.fn()} />)
-    const checkbox = screen.getByRole('checkbox')
-    expect(checkbox.getAttribute('aria-checked')).toBe('false')
+    render(<TaskItem task={task} isCompleted={true} onToggle={vi.fn()} onOpen={vi.fn()} />)
+    expect(screen.getByRole('checkbox').getAttribute('aria-checked')).toBe('true')
   })
 })

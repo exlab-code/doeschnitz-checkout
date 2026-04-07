@@ -1,29 +1,26 @@
 'use client'
 
 import type { Task } from '@/lib/types'
-import { MediaPlayer } from './media-player'
 
 interface TaskItemProps {
   task: Task
   isCompleted: boolean
-  isExpanded: boolean
   onToggle: (taskId: string) => void
-  onTap: (taskId: string) => void
+  onOpen: (taskId: string) => void
 }
 
-export function TaskItem({ task, isCompleted, isExpanded, onToggle, onTap }: TaskItemProps) {
-  const borderClass = isExpanded
-    ? 'border-2 border-black'
-    : isCompleted
-      ? 'border border-gray-200 bg-gray-50'
-      : 'border border-gray-200'
+export function TaskItem({ task, isCompleted, onToggle, onOpen }: TaskItemProps) {
+  const hasInfo = task.description || task.media.length > 0
 
   return (
-    <div className={`p-3 ${borderClass}`}>
-      <div
-        className="flex items-center gap-2 cursor-pointer"
-        onClick={() => onTap(task.id)}
-      >
+    <div
+      className={`p-3 ${
+        isCompleted
+          ? 'border border-gray-200 bg-gray-50'
+          : 'border border-gray-200'
+      }`}
+    >
+      <div className="flex items-center gap-2">
         <button
           role="checkbox"
           aria-checked={isCompleted}
@@ -40,21 +37,22 @@ export function TaskItem({ task, isCompleted, isExpanded, onToggle, onTap }: Tas
           {isCompleted && <span className="text-[10px] leading-none">✓</span>}
         </button>
         <span
-          className={`text-xs font-semibold ${
+          className={`text-xs font-semibold flex-1 ${
             isCompleted ? 'line-through text-gray-400' : 'text-black'
-          }`}
+          } ${hasInfo ? 'cursor-pointer' : ''}`}
+          onClick={() => hasInfo && onOpen(task.id)}
         >
           {task.title}
         </span>
+        {hasInfo && (
+          <button
+            onClick={() => onOpen(task.id)}
+            className="text-[9px] text-gray-400 border border-gray-300 px-1.5 py-0.5 shrink-0 hover:border-gray-500 hover:text-gray-600"
+          >
+            {task.media.length > 0 ? `${task.media.length} 📷` : 'info'}
+          </button>
+        )}
       </div>
-      {isExpanded && (
-        <div className="ml-6 mt-2">
-          {task.description && (
-            <p className="text-[10px] text-gray-600 mb-2">{task.description}</p>
-          )}
-          <MediaPlayer items={task.media} />
-        </div>
-      )}
     </div>
   )
 }
