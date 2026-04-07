@@ -51,40 +51,44 @@ export default function Home() {
   }, [])
 
   return (
-    <div>
-      <h1 className="text-xs font-bold tracking-[3px] uppercase">ABREISE</h1>
-      <p className="text-[10px] text-gray-400 tracking-wider uppercase mt-1">HAUS DÖSCHNITZ</p>
+    <>
+      <div className="pb-20">
+        <h1 className="text-xs font-bold tracking-[3px] uppercase">ABREISE</h1>
+        <p className="text-[10px] text-gray-400 tracking-wider uppercase mt-1">HAUS DÖSCHNITZ</p>
 
-      <div className="flex flex-col gap-2 mt-4">
-        {areas.map((area) => (
-          <AreaCard
-            key={area.id}
-            id={area.id}
-            name={area.name}
-            emoji={area.emoji}
-            taskCount={area.taskCount}
-            completedCount={area.completedCount}
-          />
-        ))}
+        <div className="flex flex-col gap-2 mt-4">
+          {areas.map((area) => (
+            <AreaCard
+              key={area.id}
+              id={area.id}
+              name={area.name}
+              emoji={area.emoji}
+              taskCount={area.taskCount}
+              completedCount={area.completedCount}
+            />
+          ))}
+        </div>
+
+        <div className="mt-4 text-center">
+          <Link
+            href="/log"
+            className="text-[10px] text-gray-400 uppercase tracking-wider"
+          >
+            Letzte Abreisen
+          </Link>
+        </div>
       </div>
 
-      <div className="mt-6">
-        <Link
-          href="/signoff"
-          className="block text-center text-xs font-semibold px-4 py-2 border border-gray-300 text-gray-500 hover:border-black hover:text-black transition-colors"
-        >
-          Abreise bestätigen
-        </Link>
+      <div className="fixed bottom-0 left-0 right-0 bg-white border-t border-gray-200 px-4 py-3 z-30">
+        <div className="max-w-md mx-auto">
+          <Link
+            href="/signoff"
+            className="block text-center text-xs font-semibold px-4 py-2.5 border-2 border-black hover:bg-black hover:text-white transition-colors"
+          >
+            Checkout
+          </Link>
+        </div>
       </div>
-
-      <div className="mt-3 text-center">
-        <Link
-          href="/log"
-          className="text-[10px] text-gray-400 uppercase tracking-wider"
-        >
-          Letzte Abreisen
-        </Link>
-      </div>
-    </div>
+    </>
   )
 }

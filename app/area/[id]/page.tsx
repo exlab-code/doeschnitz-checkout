@@ -113,7 +113,8 @@ export default function AreaPage({ params }: { params: Promise<{ id: string }> }
   }
 
   return (
-    <div>
+    <>
+    <div className="pb-20">
       <Link href="/" className="text-xs text-gray-500 hover:text-black">
         ← zurück
       </Link>
@@ -198,20 +199,20 @@ export default function AreaPage({ params }: { params: Promise<{ id: string }> }
         </button>
       )}
 
-      {!isEditing && (
-        <div className="mt-6">
+    </div>
+
+    {!isEditing && (
+      <div className="fixed bottom-0 left-0 right-0 bg-white border-t border-gray-200 px-4 py-3 z-30">
+        <div className="max-w-md mx-auto">
           <Link
             href="/signoff"
-            className={`block text-center text-xs font-semibold px-4 py-2 transition-colors ${
-              allCompleted
-                ? 'border-2 border-black hover:bg-black hover:text-white'
-                : 'border border-gray-300 text-gray-500 hover:border-black hover:text-black'
-            }`}
+            className="block text-center text-xs font-semibold px-4 py-2.5 border-2 border-black hover:bg-black hover:text-white transition-colors"
           >
-            {allCompleted ? 'Alle erledigt — Abreise bestätigen' : 'Abreise bestätigen'}
+            Checkout
           </Link>
         </div>
-      )}
-    </div>
+      </div>
+    )}
+    </>
   )
 }
