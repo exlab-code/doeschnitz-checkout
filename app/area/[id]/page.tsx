@@ -2,6 +2,7 @@
 
 import { use, useCallback, useEffect, useState } from 'react'
 import Link from 'next/link'
+import { AnimatePresence } from 'framer-motion'
 import type { AreaFile, Task } from '@/lib/types'
 import { ProgressBar } from '@/components/progress-bar'
 import { TaskItem } from '@/components/task-item'
@@ -103,23 +104,7 @@ export default function AreaPage({ params }: { params: Promise<{ id: string }> }
 
   const allCompleted = area.tasks.length > 0 && area.tasks.every((t) => completedIds.has(t.id))
 
-  // Detail view overlay
-  if (detailIndex !== null && area.tasks[detailIndex]) {
-    const task = area.tasks[detailIndex]
-    return (
-      <TaskDetail
-        task={task}
-        isCompleted={completedIds.has(task.id)}
-        currentIndex={detailIndex}
-        totalTasks={area.tasks.length}
-        onToggle={handleToggle}
-        onClose={() => setDetailIndex(null)}
-        onPrev={() => setDetailIndex((i) => Math.max(0, (i ?? 0) - 1))}
-        onNext={() => setDetailIndex((i) => Math.min(area.tasks.length - 1, (i ?? 0) + 1))}
-        onSaveTask={saveTask}
-      />
-    )
-  }
+  const detailTask = detailIndex !== null ? area.tasks[detailIndex] : null
 
   return (
     <>
@@ -222,6 +207,23 @@ export default function AreaPage({ params }: { params: Promise<{ id: string }> }
         </div>
       </div>
     )}
+
+    <AnimatePresence>
+      {detailTask && detailIndex !== null && (
+        <TaskDetail
+          key={detailTask.id}
+          task={detailTask}
+          isCompleted={completedIds.has(detailTask.id)}
+          currentIndex={detailIndex}
+          totalTasks={area.tasks.length}
+          onToggle={handleToggle}
+          onClose={() => setDetailIndex(null)}
+          onPrev={() => setDetailIndex((i) => Math.max(0, (i ?? 0) - 1))}
+          onNext={() => setDetailIndex((i) => Math.min(area.tasks.length - 1, (i ?? 0) + 1))}
+          onSaveTask={saveTask}
+        />
+      )}
+    </AnimatePresence>
     </>
   )
 }
