@@ -114,7 +114,7 @@ export function TaskDetail({
                       src={item.url}
                       controls
                       playsInline
-                      className="w-full max-h-[70vh] object-contain bg-gray-50"
+                      className="w-full max-h-[70vh] object-contain"
                     >
                       <track kind="captions" />
                     </video>
@@ -122,7 +122,7 @@ export function TaskDetail({
                     <img
                       src={item.url}
                       alt={item.label}
-                      className="w-full max-h-[70vh] object-contain bg-gray-50"
+                      className="w-full max-h-[70vh] object-contain"
                     />
                   )}
                   {isEditing && (

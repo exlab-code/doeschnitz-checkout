@@ -3,7 +3,10 @@ import path from 'path'
 
 import { NextResponse } from 'next/server'
 
-const MAX_FILE_SIZE = 50 * 1024 * 1024 // 50 MB
+// Allow uploads up to 100MB
+export const maxDuration = 60
+
+const MAX_FILE_SIZE = 100 * 1024 * 1024 // 100 MB
 
 export function mediaDir(): string {
   return process.env.MEDIA_DIR || path.join(process.cwd(), 'public', 'media')
