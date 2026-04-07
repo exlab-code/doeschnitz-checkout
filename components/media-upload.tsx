@@ -48,7 +48,9 @@ export function MediaUpload({ onUploaded }: MediaUploadProps) {
         if (!res.ok) throw new Error('Video-Upload fehlgeschlagen')
 
         const data = await res.json()
-        onUploaded(data.secure_url, 'video', file.name)
+        // Add auto format/quality transformation for optimal delivery
+        const url = data.secure_url.replace('/upload/', '/upload/f_auto,q_auto/')
+        onUploaded(url, 'video', file.name)
       } else {
         // Image → compress client-side, then upload to our server
         setStatus('Bild wird komprimiert...')
