@@ -34,10 +34,10 @@ export function TaskItem({ task, isCompleted, onToggle, onOpen }: TaskItemProps)
               : 'border-black'
           }`}
         >
-          {isCompleted && <span className="text-[10px] leading-none">✓</span>}
+          {isCompleted && <span className="text-xs leading-none">✓</span>}
         </button>
         <span
-          className={`text-xs font-semibold flex-1 ${
+          className={`text-sm font-semibold flex-1 ${
             isCompleted ? 'line-through text-gray-400' : 'text-black'
           } ${hasInfo ? 'cursor-pointer' : ''}`}
           onClick={() => hasInfo && onOpen(task.id)}
@@ -47,7 +47,7 @@ export function TaskItem({ task, isCompleted, onToggle, onOpen }: TaskItemProps)
         {hasInfo && (
           <button
             onClick={() => onOpen(task.id)}
-            className="text-[9px] text-gray-400 border border-gray-300 px-1.5 py-0.5 shrink-0 hover:border-gray-500 hover:text-gray-600"
+            className="text-xs text-gray-400 border border-gray-300 px-1.5 py-0.5 shrink-0 hover:border-gray-500 hover:text-gray-600"
           >
             {task.media.length > 0 ? `${task.media.length} 📷` : 'info'}
           </button>

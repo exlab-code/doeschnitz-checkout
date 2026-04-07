@@ -53,8 +53,8 @@ export default function Home() {
   return (
     <>
       <div className="pb-20">
-        <h1 className="text-xs font-bold tracking-[3px] uppercase">ABREISE</h1>
-        <p className="text-[10px] text-gray-400 tracking-wider uppercase mt-1">HAUS DÖSCHNITZ</p>
+        <h1 className="text-sm font-bold tracking-[3px] uppercase">ABREISE</h1>
+        <p className="text-xs text-gray-400 tracking-wider uppercase mt-1">HAUS DÖSCHNITZ</p>
 
         <div className="flex flex-col gap-2 mt-4">
           {areas.map((area) => (
@@ -72,7 +72,7 @@ export default function Home() {
         <div className="mt-4 text-center">
           <Link
             href="/log"
-            className="text-[10px] text-gray-400 uppercase tracking-wider"
+            className="text-xs text-gray-400 uppercase tracking-wider"
           >
             Letzte Abreisen
           </Link>
@@ -83,7 +83,7 @@ export default function Home() {
         <div className="max-w-md mx-auto">
           <Link
             href="/signoff"
-            className="block text-center text-xs font-semibold px-4 py-2.5 border-2 border-black hover:bg-black hover:text-white transition-colors"
+            className="block text-center text-sm font-semibold px-4 py-2.5 border-2 border-black hover:bg-black hover:text-white transition-colors"
           >
             Checkout
           </Link>

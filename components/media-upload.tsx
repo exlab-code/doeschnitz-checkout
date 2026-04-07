@@ -32,7 +32,7 @@ export function MediaUpload({ onUploaded }: MediaUploadProps) {
   }
 
   return (
-    <label className="flex items-center justify-center border border-dashed border-gray-400 px-3 py-2 text-[10px] text-gray-500 cursor-pointer hover:border-black hover:text-black transition-colors">
+    <label className="flex items-center justify-center border border-dashed border-gray-400 px-3 py-2 text-xs text-gray-500 cursor-pointer hover:border-black hover:text-black transition-colors">
       + Foto / Video hinzufügen
       <input
         type="file"

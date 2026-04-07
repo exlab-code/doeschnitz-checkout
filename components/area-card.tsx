@@ -17,11 +17,11 @@ export function AreaCard({ id, name, emoji, taskCount, completedCount }: AreaCar
       <div className="flex items-center justify-between">
         <div className="flex items-center gap-2">
           <span>{emoji}</span>
-          <span className="font-semibold text-sm">{name}</span>
+          <span className="font-semibold text-base">{name}</span>
         </div>
-        <span className="text-xs text-gray-500">{progressFraction}</span>
+        <span className="text-sm text-gray-500">{progressFraction}</span>
       </div>
-      <p className="text-[10px] text-gray-400 mt-1">{taskCount} Aufgaben</p>
+      <p className="text-xs text-gray-400 mt-1">{taskCount} Aufgaben</p>
       {taskCount > 0 && (
         <div className="mt-2">
           <ProgressBar total={taskCount} completed={completedCount} />

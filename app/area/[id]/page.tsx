@@ -88,7 +88,7 @@ export default function AreaPage({ params }: { params: Promise<{ id: string }> }
   if (!area) {
     return (
       <div>
-        <p className="text-xs text-gray-400">Lädt…</p>
+        <p className="text-sm text-gray-400">Lädt…</p>
       </div>
     )
   }
@@ -115,11 +115,11 @@ export default function AreaPage({ params }: { params: Promise<{ id: string }> }
   return (
     <>
     <div className="pb-20">
-      <Link href="/" className="text-xs text-gray-500 hover:text-black">
+      <Link href="/" className="text-sm text-gray-500 hover:text-black">
         ← zurück
       </Link>
 
-      <h1 className="font-bold text-sm mt-3 mb-3">
+      <h1 className="font-bold text-base mt-3 mb-3">
         {area.emoji} {area.name}
       </h1>
 
@@ -140,27 +140,27 @@ export default function AreaPage({ params }: { params: Promise<{ id: string }> }
                       value={task.title}
                       onSave={(newTitle) => saveTask(task.id, { title: newTitle })}
                       as="span"
-                      className="text-xs font-semibold"
+                      className="text-sm font-semibold"
                     />
                     <EditableText
                       value={task.description}
                       onSave={(newDesc) => saveTask(task.id, { description: newDesc })}
                       as="p"
-                      className="text-[10px] text-gray-600"
+                      className="text-xs text-gray-600"
                       multiline
                     />
                   </div>
                   <button
                     onClick={() => deleteTask(task.id)}
                     aria-label="Aufgabe löschen"
-                    className="text-gray-400 hover:text-red-600 text-xs shrink-0 transition-colors"
+                    className="text-gray-400 hover:text-red-600 text-sm shrink-0 transition-colors"
                   >
                     ✕
                   </button>
                 </div>
 
                 {task.media.length > 0 && (
-                  <div className="text-[10px] text-gray-500">
+                  <div className="text-xs text-gray-500">
                     {task.media.length} Medium/Medien
                   </div>
                 )}
@@ -193,7 +193,7 @@ export default function AreaPage({ params }: { params: Promise<{ id: string }> }
       {isEditing && (
         <button
           onClick={addTask}
-          className="mt-4 w-full text-xs border border-dashed border-gray-400 px-4 py-2 text-gray-500 hover:border-black hover:text-black transition-colors"
+          className="mt-4 w-full text-sm border border-dashed border-gray-400 px-4 py-2 text-gray-500 hover:border-black hover:text-black transition-colors"
         >
           + Aufgabe hinzufügen
         </button>
@@ -206,7 +206,7 @@ export default function AreaPage({ params }: { params: Promise<{ id: string }> }
         <div className="max-w-md mx-auto">
           <Link
             href="/signoff"
-            className="block text-center text-xs font-semibold px-4 py-2.5 border-2 border-black hover:bg-black hover:text-white transition-colors"
+            className="block text-center text-sm font-semibold px-4 py-2.5 border-2 border-black hover:bg-black hover:text-white transition-colors"
           >
             Checkout
           </Link>

@@ -16,7 +16,7 @@ export function MediaPlayer({ items }: MediaPlayerProps) {
           ) : (
             <img src={item.url} alt={item.label} className="w-full" />
           )}
-          <p className="text-[10px] text-gray-500 mt-1">{item.label}</p>
+          <p className="text-xs text-gray-500 mt-1">{item.label}</p>
         </div>
       ))}
     </div>

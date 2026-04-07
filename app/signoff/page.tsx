@@ -69,13 +69,13 @@ export default function SignoffPage() {
     return (
       <div>
         <div className="mt-4">
-          <p className="text-sm font-semibold">Danke, {submittedName}!</p>
-          <p className="text-[10px] text-gray-400 mt-1">Abreise wurde erfasst.</p>
+          <p className="text-base font-semibold">Danke, {submittedName}!</p>
+          <p className="text-xs text-gray-400 mt-1">Abreise wurde erfasst.</p>
         </div>
         <div className="mt-6">
           <Link
             href="/"
-            className="border border-gray-300 px-4 py-2 text-[10px]"
+            className="border border-gray-300 px-4 py-2 text-xs"
           >
             Zurück zum Start
           </Link>
@@ -87,22 +87,22 @@ export default function SignoffPage() {
   return (
     <div>
       <div className="mb-4">
-        <Link href="/" className="text-[10px] text-gray-500">
+        <Link href="/" className="text-xs text-gray-500">
           ← zurück
         </Link>
       </div>
 
-      <h1 className="text-xs font-bold tracking-[3px] uppercase">
+      <h1 className="text-sm font-bold tracking-[3px] uppercase">
         ABREISE BESTÄTIGEN
       </h1>
-      <p className="text-[10px] text-gray-400 mt-1">
+      <p className="text-xs text-gray-400 mt-1">
         Bitte mit deinem Namen unterschreiben.
       </p>
 
       <div className="mt-6 flex flex-col gap-2">
         <label
           htmlFor="name"
-          className="text-[10px] text-gray-500 uppercase tracking-wider"
+          className="text-xs text-gray-500 uppercase tracking-wider"
         >
           Dein Name
         </label>
@@ -119,7 +119,7 @@ export default function SignoffPage() {
         <button
           onClick={handleSubmit}
           disabled={!name.trim() || isSubmitting}
-          className="w-full border-2 border-black px-4 py-3 text-xs font-semibold uppercase tracking-wider hover:bg-black hover:text-white disabled:opacity-30"
+          className="w-full border-2 border-black px-4 py-3 text-sm font-semibold uppercase tracking-wider hover:bg-black hover:text-white disabled:opacity-30"
         >
           Abreise bestätigen
         </button>

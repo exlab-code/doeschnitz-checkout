@@ -11,30 +11,30 @@ export default async function LogPage() {
   return (
     <div>
       <div className="mb-4">
-        <Link href="/" className="text-[10px] text-gray-500">
+        <Link href="/" className="text-xs text-gray-500">
           ← zurück
         </Link>
       </div>
 
-      <h1 className="text-xs font-bold tracking-[3px] uppercase">
+      <h1 className="text-sm font-bold tracking-[3px] uppercase">
         LETZTE ABREISEN
       </h1>
 
       <div className="mt-4 flex flex-col gap-2">
         {reversed.length === 0 ? (
-          <p className="text-[10px] text-gray-400">
+          <p className="text-xs text-gray-400">
             Noch keine Abreisen erfasst.
           </p>
         ) : (
           reversed.map((entry, index) => (
             <div key={index} className="border border-gray-200 p-3">
               <div className="flex items-center justify-between">
-                <span className="text-xs font-semibold">{entry.name}</span>
-                <span className="text-[10px] text-gray-500">
+                <span className="text-sm font-semibold">{entry.name}</span>
+                <span className="text-xs text-gray-500">
                   {entry.tasksCompleted}/{entry.tasksTotal}
                 </span>
               </div>
-              <p className="text-[10px] text-gray-400 mt-1">
+              <p className="text-xs text-gray-400 mt-1">
                 {new Date(entry.date).toLocaleDateString('de-DE', {
                   day: 'numeric',
                   month: 'long',

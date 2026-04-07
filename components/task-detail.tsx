@@ -33,11 +33,11 @@ export function TaskDetail({
         <div className="max-w-md mx-auto flex items-center justify-between">
           <button
             onClick={onClose}
-            className="text-xs font-semibold px-3 py-1.5 border border-gray-300 hover:border-black hover:text-black text-gray-500"
+            className="text-sm font-semibold px-3 py-1.5 border border-gray-300 hover:border-black hover:text-black text-gray-500"
           >
             ← zur Liste
           </button>
-          <span className="text-[10px] text-gray-400">
+          <span className="text-xs text-gray-400">
             {currentIndex + 1} / {totalTasks}
           </span>
         </div>
@@ -61,7 +61,7 @@ export function TaskDetail({
               {isCompleted && <span className="text-xs leading-none">✓</span>}
             </button>
             <h2
-              className={`text-sm font-bold ${
+              className={`text-base font-bold ${
                 isCompleted ? 'line-through text-gray-400' : 'text-black'
               }`}
             >
@@ -71,7 +71,7 @@ export function TaskDetail({
 
           {/* Description */}
           {task.description && (
-            <p className="text-xs text-gray-600 leading-relaxed mb-6">
+            <p className="text-sm text-gray-600 leading-relaxed mb-6">
               {task.description}
             </p>
           )}
@@ -110,7 +110,7 @@ export function TaskDetail({
           <button
             onClick={onPrev}
             disabled={!hasPrev}
-            className={`text-xs font-semibold px-4 py-2 border-2 ${
+            className={`text-sm font-semibold px-4 py-2 border-2 ${
               hasPrev
                 ? 'border-black hover:bg-black hover:text-white'
                 : 'border-gray-200 text-gray-300 cursor-not-allowed'
@@ -121,7 +121,7 @@ export function TaskDetail({
           <button
             onClick={onNext}
             disabled={!hasNext}
-            className={`text-xs font-semibold px-4 py-2 border-2 ${
+            className={`text-sm font-semibold px-4 py-2 border-2 ${
               hasNext
                 ? 'border-black hover:bg-black hover:text-white'
                 : 'border-gray-200 text-gray-300 cursor-not-allowed'
