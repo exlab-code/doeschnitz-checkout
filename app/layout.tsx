@@ -1,6 +1,8 @@
 import type { Metadata, Viewport } from 'next'
 import { JetBrains_Mono } from 'next/font/google'
 import './globals.css'
+import { EditModeProvider } from '@/components/edit-mode-provider'
+import { EditToggle } from '@/components/edit-toggle'
 
 const jetbrainsMono = JetBrains_Mono({
   subsets: ['latin'],
@@ -26,9 +28,12 @@ export default function RootLayout({
   return (
     <html lang="de" className={jetbrainsMono.variable}>
       <body className="font-mono bg-white text-black antialiased">
-        <main className="max-w-md mx-auto px-4 py-6">
-          {children}
-        </main>
+        <EditModeProvider>
+          <main className="max-w-md mx-auto px-4 py-6">
+            {children}
+          </main>
+          <EditToggle />
+        </EditModeProvider>
       </body>
     </html>
   )
