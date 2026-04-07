@@ -1,6 +1,9 @@
 'use client'
 
 import type { Task } from '@/lib/types'
+import { useEditMode } from './edit-mode-provider'
+import { EditableText } from './editable-text'
+import { MediaUpload } from './media-upload'
 
 interface TaskDetailProps {
   task: Task
@@ -11,6 +14,7 @@ interface TaskDetailProps {
   onClose: () => void
   onPrev: () => void
   onNext: () => void
+  onSaveTask: (taskId: string, updates: Partial<Pick<Task, 'title' | 'description' | 'media'>>) => void
 }
 
 export function TaskDetail({
@@ -22,9 +26,11 @@ export function TaskDetail({
   onClose,
   onPrev,
   onNext,
+  onSaveTask,
 }: TaskDetailProps) {
   const hasPrev = currentIndex > 0
   const hasNext = currentIndex < totalTasks - 1
+  const { isEditing } = useEditMode()
 
   return (
     <div className="fixed inset-0 bg-white z-40 flex flex-col">
@@ -33,7 +39,7 @@ export function TaskDetail({
         <div className="max-w-md mx-auto flex items-center justify-between">
           <button
             onClick={onClose}
-            className="text-sm font-semibold px-3 py-1.5 border border-gray-300 hover:border-black hover:text-black text-gray-500"
+            className="text-sm font-semibold px-3 py-2 border border-gray-300 hover:border-black hover:text-black text-gray-500"
           >
             ← zur Liste
           </button>
@@ -52,35 +58,55 @@ export function TaskDetail({
               role="checkbox"
               aria-checked={isCompleted}
               onClick={() => onToggle(task.id)}
-              className={`w-5 h-5 border-2 flex items-center justify-center shrink-0 mt-0.5 ${
+              className={`w-7 h-7 border-2 flex items-center justify-center shrink-0 mt-0.5 ${
                 isCompleted
                   ? 'bg-black border-black text-white'
                   : 'border-black'
               }`}
             >
-              {isCompleted && <span className="text-xs leading-none">✓</span>}
+              {isCompleted && <span className="text-sm leading-none">✓</span>}
             </button>
-            <h2
-              className={`text-base font-bold ${
-                isCompleted ? 'line-through text-gray-400' : 'text-black'
-              }`}
-            >
-              {task.title}
-            </h2>
+            {isEditing ? (
+              <EditableText
+                value={task.title}
+                onSave={(v) => onSaveTask(task.id, { title: v })}
+                className="text-base font-bold text-black"
+              />
+            ) : (
+              <h2
+                className={`text-base font-bold ${
+                  isCompleted ? 'line-through text-gray-400' : 'text-black'
+                }`}
+              >
+                {task.title}
+              </h2>
+            )}
           </div>
 
           {/* Description */}
-          {task.description && (
-            <p className="text-sm text-gray-600 leading-relaxed mb-6">
-              {task.description}
-            </p>
+          {isEditing ? (
+            <div className="mb-6">
+              <EditableText
+                value={task.description}
+                onSave={(v) => onSaveTask(task.id, { description: v })}
+                as="p"
+                className="text-sm text-gray-600"
+                multiline
+              />
+            </div>
+          ) : (
+            task.description && (
+              <p className="text-sm text-gray-600 leading-relaxed mb-6">
+                {task.description}
+              </p>
+            )
           )}
 
           {/* Media — large, portrait-optimized */}
           {task.media.length > 0 && (
             <div className="flex flex-col gap-4">
               {task.media.map((item, i) => (
-                <div key={i}>
+                <div key={i} className="relative">
                   {item.type === 'video' ? (
                     <video
                       src={item.url}
@@ -97,9 +123,30 @@ export function TaskDetail({
                       className="w-full max-h-[70vh] object-contain bg-gray-50"
                     />
                   )}
+                  {isEditing && (
+                    <button
+                      onClick={() => {
+                        const updatedMedia = task.media.filter((_, idx) => idx !== i)
+                        onSaveTask(task.id, { media: updatedMedia })
+                      }}
+                      className="absolute top-2 right-2 bg-white border border-gray-300 text-gray-500 hover:text-red-600 hover:border-red-400 w-8 h-8 flex items-center justify-center text-sm"
+                    >
+                      ✕
+                    </button>
+                  )}
                 </div>
               ))}
             </div>
+          )}
+
+          {/* Media upload in edit mode */}
+          {isEditing && (
+            <MediaUpload
+              onUploaded={(url, type, filename) => {
+                const updatedMedia = [...task.media, { type, url, label: filename }]
+                onSaveTask(task.id, { media: updatedMedia })
+              }}
+            />
           )}
         </div>
       </div>
@@ -110,7 +157,7 @@ export function TaskDetail({
           <button
             onClick={onPrev}
             disabled={!hasPrev}
-            className={`text-sm font-semibold px-4 py-2 border-2 ${
+            className={`text-sm font-semibold px-4 py-2.5 border-2 ${
               hasPrev
                 ? 'border-black hover:bg-black hover:text-white'
                 : 'border-gray-200 text-gray-300 cursor-not-allowed'
@@ -121,7 +168,7 @@ export function TaskDetail({
           <button
             onClick={onNext}
             disabled={!hasNext}
-            className={`text-sm font-semibold px-4 py-2 border-2 ${
+            className={`text-sm font-semibold px-4 py-2.5 border-2 ${
               hasNext
                 ? 'border-black hover:bg-black hover:text-white'
                 : 'border-gray-200 text-gray-300 cursor-not-allowed'

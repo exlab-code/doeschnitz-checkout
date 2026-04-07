@@ -25,7 +25,7 @@ export async function POST(request: Request): Promise<NextResponse> {
     return NextResponse.json({ error: 'File exceeds 50 MB limit' }, { status: 400 })
   }
 
-  const sanitizedName = file.name.replace(/[^a-zA-Z0-9.]/g, '_')
+  const sanitizedName = file.name.replace(/[^a-zA-Z0-9._-]/g, '_')
   const filename = `${Date.now()}_${sanitizedName}`
 
   const dir = mediaDir()

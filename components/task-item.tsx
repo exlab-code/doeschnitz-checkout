@@ -28,7 +28,7 @@ export function TaskItem({ task, isCompleted, onToggle, onOpen }: TaskItemProps)
             e.stopPropagation()
             onToggle(task.id)
           }}
-          className={`w-4 h-4 border-2 flex items-center justify-center shrink-0 ${
+          className={`w-6 h-6 border-2 flex items-center justify-center shrink-0 ${
             isCompleted
               ? 'bg-black border-black text-white'
               : 'border-black'
@@ -47,7 +47,7 @@ export function TaskItem({ task, isCompleted, onToggle, onOpen }: TaskItemProps)
         {hasInfo && (
           <button
             onClick={() => onOpen(task.id)}
-            className="text-xs text-gray-400 border border-gray-300 px-1.5 py-0.5 shrink-0 hover:border-gray-500 hover:text-gray-600"
+            className="text-xs text-gray-400 border border-gray-300 px-2.5 py-1 shrink-0 hover:border-gray-500 hover:text-gray-600"
           >
             {task.media.length > 0 ? `${task.media.length} 📷` : 'info'}
           </button>

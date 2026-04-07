@@ -108,6 +108,7 @@ export default function AreaPage({ params }: { params: Promise<{ id: string }> }
         onClose={() => setDetailIndex(null)}
         onPrev={() => setDetailIndex((i) => Math.max(0, (i ?? 0) - 1))}
         onNext={() => setDetailIndex((i) => Math.min(area.tasks.length - 1, (i ?? 0) + 1))}
+        onSaveTask={saveTask}
       />
     )
   }

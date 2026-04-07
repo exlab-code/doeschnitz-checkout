@@ -35,7 +35,7 @@ export function EditableText({
     }
   }
 
-  const inputClass = `w-full bg-transparent border-b border-gray-400 focus:outline-none focus:border-black text-inherit font-inherit ${className ?? ''}`
+  const inputClass = `w-full bg-white border border-gray-300 focus:outline-none focus:border-black px-2 py-2 text-sm ${className ?? ''}`
 
   if (multiline) {
     return (
