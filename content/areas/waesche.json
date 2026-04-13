@@ -1,0 +1,19 @@
+{
+  "id": "waesche",
+  "name": "Wäsche",
+  "emoji": "👕",
+  "tasks": [
+    {
+      "id": "waesche-waschen",
+      "title": "Bettwäsche & Handtücher waschen",
+      "description": "Genutzte Bettwäsche, Handtücher, Spültücher waschen und aufhängen (auf Wäscheständer oder Wäscheleine).",
+      "media": []
+    },
+    {
+      "id": "waschmaschine",
+      "title": "Waschmaschine abstellen",
+      "description": "Waschmaschine von Strom nehmen und offen lassen. Wasser abdrehen (einer der Hähne daneben mit Schlauch).",
+      "media": []
+    }
+  ]
+}

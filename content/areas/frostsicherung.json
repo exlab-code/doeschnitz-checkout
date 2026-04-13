@@ -1,0 +1,37 @@
+{
+  "id": "frostsicherung",
+  "name": "Frostsicherung",
+  "emoji": "❄️",
+  "tasks": [
+    {
+      "id": "kuehlschrank-eg-winter",
+      "title": "Kühlschrank EG vom Strom nehmen",
+      "description": "Tür und Gefrierfach offen lassen, sonst Schimmel. Inhalte wie Soßen etc. in die Spüle stellen, falls sie durch Frost platzen.",
+      "media": []
+    },
+    {
+      "id": "haupthahn-zudrehen",
+      "title": "Haupthahn im Keller zudrehen",
+      "description": "Im Keller hinten bei Gewölbe rechts den grünen Haupthahn zudrehen (siehe Schild). Decke um Wasseruhr und Hahn lassen!",
+      "media": []
+    },
+    {
+      "id": "restwasser-keller",
+      "title": "Restwasser Keller ablassen",
+      "description": "Restwasser aus Hahn neben der Kellertreppe ablassen in Eimer (siehe Schild).",
+      "media": []
+    },
+    {
+      "id": "restwasser-haus",
+      "title": "Restwasser im ganzen Haus ablassen",
+      "description": "Hähne auflassen in:\n- Küchen (Spülen EG + OG)\n- Duschen und Waschbecken (1x OG, 2x EG)\n- Toiletten-Spülkästen und Waschbecken (1x OG, 2x EG)\n\nWasser so lange ablassen, bis auch Wasser aus dem Boiler in der Küche und aus dem Durchlauferhitzer im Bad EG raus ist.",
+      "media": []
+    },
+    {
+      "id": "frostwaechter",
+      "title": "Frostwächter in Toiletten EG anstellen",
+      "description": "Auf unteres Drittel Leistung. Türen und Fenster der Toiletten schließen.",
+      "media": []
+    }
+  ]
+}

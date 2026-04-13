@@ -1,0 +1,19 @@
+{
+  "id": "bad-waesche",
+  "name": "Bad & WC",
+  "emoji": "🚿",
+  "tasks": [
+    {
+      "id": "wc-duschen-putzen",
+      "title": "WCs und Duschen putzen",
+      "description": "OG: 1x Dusche, 1x WC (wenn benutzt)\nUG: 1x Badezimmer, 2x WC",
+      "media": []
+    },
+    {
+      "id": "fussbodenheizung-bad",
+      "title": "Fußbodenheizung Bad EG ausstellen",
+      "description": "Am Touch-Display komplett ausstellen. Dazu manuellen Schalter rechts runter drücken. Wichtig: Heizung ganz ausstellen, auch den Frostschutz ausstellen.",
+      "media": []
+    }
+  ]
+}

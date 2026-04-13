@@ -1,0 +1,19 @@
+{
+  "id": "heizung-oefen",
+  "name": "Heizung & Öfen",
+  "emoji": "🔥",
+  "tasks": [
+    {
+      "id": "holz-checken",
+      "title": "Holzvorrat checken",
+      "description": "Checken, ob noch genug Holz zum Heizen für 2 Tage da ist. Wenn nicht, noch welches besorgen/vorbereiten bzw. hoch in Wohnzimmer und Flur stapeln. Oder frühzeitig in Gruppe Bescheid geben.",
+      "media": []
+    },
+    {
+      "id": "oefen-leeren",
+      "title": "Alle Öfen leeren & säubern",
+      "description": "1x EG, 2x OG in Ascheeimer leeren. Kalte Asche kann auf Kompost entleert werden. Ascheeimer wieder zurück zu den Öfen im EG und OG stellen — dort werden sie gebraucht.",
+      "media": []
+    }
+  ]
+}

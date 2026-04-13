@@ -20,6 +20,7 @@ export default function SignoffPage() {
   const [allTasks, setAllTasks] = useState<CheckoutTask[]>([])
   const [completedIds, setCompletedIds] = useState<Set<string>>(new Set())
   const [name, setName] = useState('')
+  const [notes, setNotes] = useState('')
   const [submittedName, setSubmittedName] = useState('')
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [areas, setAreas] = useState<AreaIndexItem[]>([])
@@ -108,6 +109,7 @@ export default function SignoffPage() {
           name: name.trim(),
           tasksCompleted,
           tasksTotal: allTasks.length,
+          ...(notes.trim() ? { notes: notes.trim() } : {}),
         }),
       })
 
@@ -214,6 +216,23 @@ export default function SignoffPage() {
           Alles erledigt ✓
         </p>
       )}
+
+      {/* Notes */}
+      <div className="mt-8">
+        <h2 className="text-xs font-semibold uppercase tracking-wider text-gray-500 mb-2">
+          Notizen
+        </h2>
+        <p className="text-xs text-gray-400 mb-2">
+          Kaputt, fehlt, auffällig?
+        </p>
+        <textarea
+          value={notes}
+          onChange={(e) => setNotes(e.target.value)}
+          placeholder="z.B. Duschkopf tropft, Salz nachfüllen..."
+          rows={4}
+          className="w-full border border-gray-300 px-3 py-2.5 text-sm font-mono focus:outline-none focus:border-black resize-none"
+        />
+      </div>
 
       {/* Sign-off form — sticky at bottom */}
       <div className="fixed bottom-0 left-0 right-0 bg-white border-t border-gray-200 px-4 py-4 z-30">

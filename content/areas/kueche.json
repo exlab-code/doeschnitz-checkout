@@ -4,68 +4,33 @@
   "emoji": "🍳",
   "tasks": [
     {
-      "id": "kuehlschrank",
-      "title": "Kühlschrank ausräumen",
-      "description": "Alle Lebensmittel mitnehmen oder entsorgen. Kühlschrank auswischen.",
+      "id": "lebensmittel",
+      "title": "Lebensmittel verräumen",
+      "description": "Lebensmittel, die schimmeln oder gefrieren können, bitte mitnehmen. Sonst mäusesicher verpacken.",
       "media": []
     },
     {
-      "id": "herd",
-      "title": "Herd & Ofen reinigen",
-      "description": "Alle Platten abwischen. Backofen kontrollieren und ggf. reinigen. Und auch Abspülen",
-      "media": [
-        {
-          "type": "image",
-          "url": "/api/media/1775557718333_57.jpg",
-          "label": "1775557718333_57.jpg"
-        }
-      ]
-    },
-    {
-      "id": "spuele",
-      "title": "Spüle sauber machen",
-      "description": "Spüle und Abtropffläche reinigen. Abfluss kontrollieren.",
-      "media": [
-        {
-          "type": "image",
-          "url": "/api/media/1775557664818_IMG_0867.jpeg",
-          "label": "1775557664818_IMG_0867.jpeg"
-        },
-        {
-          "type": "image",
-          "url": "/api/media/1775557683005_IMG_0867.jpeg",
-          "label": "1775557683005_IMG_0867.jpeg"
-        }
-      ]
-    },
-    {
-      "id": "muell",
-      "title": "Müll rausbringen",
-      "description": "Alle Mülleimer leeren. Neue Beutel einlegen.",
+      "id": "spuelmaschine",
+      "title": "Spülmaschine",
+      "description": "Ausräumen, offen stehen lassen (sonst Schimmel), vom Strom nehmen (Stecker unter der Spüle hinten links).",
       "media": []
     },
     {
-      "id": "arbeitsflaechen",
-      "title": "Arbeitsflächen wischen",
-      "description": "Alle Oberflächen mit feuchtem Tuch abwischen.",
+      "id": "kuehlschrank-eg",
+      "title": "Kühlschrank EG",
+      "description": "Reinigen. Im Sommer auf niedrigster Stufe eingeschaltet lassen.",
       "media": []
     },
     {
-      "id": "boden-kueche",
-      "title": "Boden fegen",
-      "description": "Küchenboden fegen und ggf. wischen.",
-      "media": [
-        {
-          "type": "image",
-          "url": "/api/media/1775557697232_Bildschirmfoto_2026_02_12_um_16.50.51.png",
-          "label": "1775557697232_Bildschirmfoto_2026_02_12_um_16.50.51.png"
-        }
-      ]
+      "id": "geraete-kueche",
+      "title": "Alle Geräte vom Strom nehmen",
+      "description": "Toaster, Wasserkocher etc. ausstecken.",
+      "media": []
     },
     {
-      "id": "f4d3d3a4",
-      "title": "LICHT AUS!",
-      "description": "",
+      "id": "boiler",
+      "title": "Wasser-Boiler ausschalten",
+      "description": "Neben der Spüle unten rechts im aufklappbaren Schrank: ausschalten und Stecker ziehen.",
       "media": []
     }
   ]

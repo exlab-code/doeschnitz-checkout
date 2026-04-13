@@ -1,0 +1,25 @@
+{
+  "id": "abschluss",
+  "name": "Abschluss",
+  "emoji": "✅",
+  "tasks": [
+    {
+      "id": "infos-naechste-gruppe",
+      "title": "Infos für die nächste Gruppe schicken",
+      "description": "Welche Lebensmittel, die immer gebraucht werden, sind noch vorhanden (z.B. Öle, Kaffee…) — am besten einfach Fotos machen. Muss dringend etwas besorgt werden (z.B. WC-Papier, Spültabs…)? Andere wichtige Infos weitergeben.",
+      "media": []
+    },
+    {
+      "id": "checkliste-senden",
+      "title": "Checkliste an Vorstand senden",
+      "description": "Checkliste an Vorstand senden und Bescheid geben.",
+      "media": []
+    },
+    {
+      "id": "schluessel",
+      "title": "Schlüssel in Schlüsselbox einschließen",
+      "description": "",
+      "media": []
+    }
+  ]
+}

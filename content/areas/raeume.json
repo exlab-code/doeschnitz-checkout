@@ -1,0 +1,37 @@
+{
+  "id": "raeume",
+  "name": "Räume",
+  "emoji": "🏠",
+  "tasks": [
+    {
+      "id": "staubsaugen",
+      "title": "Alle Räume staubsaugen",
+      "description": "Wenn irgendwo sehr schmutzig, auch wischen.",
+      "media": []
+    },
+    {
+      "id": "moebel-zurueck",
+      "title": "Betten & Möbel zurückstellen",
+      "description": "In allen Räumen wieder so hinstellen wie vorher. Auch Gartenmöbel vor dem Haus.",
+      "media": []
+    },
+    {
+      "id": "fenster-schliessen",
+      "title": "Alle Fenster schließen",
+      "description": "Bitte gründlich nachschauen. Im OG erstes Zimmer rechts schließt das Fenster nicht richtig — hier ein wenig Papier/Pappe zum Einklemmen in das Schließscharnier.",
+      "media": []
+    },
+    {
+      "id": "geraete-strom",
+      "title": "Alle Geräte vom Strom nehmen",
+      "description": "Mehrfachsteckerleisten ausstecken. Auch WLAN Router vom Strom nehmen.",
+      "media": []
+    },
+    {
+      "id": "kuehlschrank-og",
+      "title": "Kühlschrank OG (falls benutzt)",
+      "description": "Falls der Kühlschrank im OG benutzt wurde: vom Strom nehmen und Tür zum Lüften offen lassen.",
+      "media": []
+    }
+  ]
+}

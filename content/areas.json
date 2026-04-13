@@ -1,6 +1,10 @@
 [
-  { "id": "kueche", "name": "Küche", "emoji": "🍳", "sortOrder": 0 },
-  { "id": "bad", "name": "Bad", "emoji": "🚿", "sortOrder": 1 },
-  { "id": "heizung", "name": "Heizung", "emoji": "🔥", "sortOrder": 2 },
-  { "id": "garten", "name": "Garten", "emoji": "🌿", "sortOrder": 3 }
+  { "id": "raeume", "name": "Räume", "emoji": "🏠", "sortOrder": 0 },
+  { "id": "bad-waesche", "name": "Bad & WC", "emoji": "🚿", "sortOrder": 1 },
+  { "id": "waesche", "name": "Wäsche", "emoji": "👕", "sortOrder": 2 },
+  { "id": "kueche", "name": "Küche", "emoji": "🍳", "sortOrder": 3 },
+  { "id": "heizung-oefen", "name": "Heizung & Öfen", "emoji": "🔥", "sortOrder": 4 },
+  { "id": "muell", "name": "Müll", "emoji": "🗑️", "sortOrder": 5 },
+  { "id": "frostsicherung", "name": "Frostsicherung", "emoji": "❄️", "sortOrder": 6 },
+  { "id": "abschluss", "name": "Abschluss", "emoji": "✅", "sortOrder": 7 }
 ]

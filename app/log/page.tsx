@@ -41,6 +41,11 @@ export default async function LogPage() {
                   year: 'numeric',
                 })}
               </p>
+              {entry.notes && (
+                <p className="text-xs text-gray-500 mt-2 whitespace-pre-wrap">
+                  {entry.notes}
+                </p>
+              )}
             </div>
           ))
         )}

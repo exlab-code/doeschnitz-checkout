@@ -1,0 +1,37 @@
+{
+  "id": "muell",
+  "name": "Müll",
+  "emoji": "🗑️",
+  "tasks": [
+    {
+      "id": "biomuell",
+      "title": "Biomüll auf Komposthaufen",
+      "description": "",
+      "media": []
+    },
+    {
+      "id": "papiermuell",
+      "title": "Papiermüll",
+      "description": "Als Heizmittel vor Ofen sammeln oder entleeren in blaue Tonne Richtung Gehsteig bei der Straßenlaterne.",
+      "media": []
+    },
+    {
+      "id": "restmuell",
+      "title": "Restmüll",
+      "description": "Muss IN EINEM SACK/TÜTE in die schwarze Tonne (auch bei der Straßenlaterne).",
+      "media": []
+    },
+    {
+      "id": "plastikmuell",
+      "title": "Plastikmüll",
+      "description": "Gut komprimiert in die speziellen gelben Säcke aus der Schublade. Diese Säcke müssen immer extra bestellt werden, also sparsam! Dann in den kleinen Raum stellen, in dem auch die Waschmaschine steht.",
+      "media": []
+    },
+    {
+      "id": "glasmuell",
+      "title": "Glasmüll entsorgen",
+      "description": "Auf dem Festplatz am Ortseingang.",
+      "media": []
+    }
+  ]
+}

@@ -34,6 +34,7 @@ export const CheckoutEntrySchema = z.object({
   date: z.string(),
   tasksCompleted: z.number(),
   tasksTotal: z.number(),
+  notes: z.string().optional(),
 })
 
 export const ChangelogEntrySchema = z.object({

@@ -2,11 +2,13 @@ import { NextResponse } from 'next/server'
 import { z } from 'zod'
 
 import { getCheckouts, addCheckout } from '@/lib/content'
+import { sendCheckoutEmail } from '@/lib/email'
 
 const CheckoutBodySchema = z.object({
   name: z.string().min(1),
   tasksCompleted: z.number().int().min(0),
   tasksTotal: z.number().int().min(0),
+  notes: z.string().optional(),
 })
 
 export async function GET(_request: Request): Promise<NextResponse> {
@@ -27,13 +29,16 @@ export async function POST(request: Request): Promise<NextResponse> {
     return NextResponse.json({ error: 'Invalid request body', details: result.error.flatten() }, { status: 400 })
   }
 
-  const { name, tasksCompleted, tasksTotal } = result.data
+  const { name, tasksCompleted, tasksTotal, notes } = result.data
   const entry = {
     name,
     tasksCompleted,
     tasksTotal,
     date: new Date().toISOString(),
+    ...(notes ? { notes } : {}),
   }
   await addCheckout(entry)
-  return NextResponse.json(entry, { status: 201 })
+
+  const emailResult = await sendCheckoutEmail(entry)
+  return NextResponse.json({ ...entry, emailSent: emailResult.ok }, { status: 201 })
 }
