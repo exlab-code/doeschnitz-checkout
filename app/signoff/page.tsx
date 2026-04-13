@@ -247,7 +247,7 @@ export default function SignoffPage() {
             />
             <button
               onClick={handleSubmit}
-              disabled={!name.trim() || isSubmitting}
+              disabled={!name.trim() || isSubmitting || openTasks.length > 0}
               className="border-2 border-black px-4 py-2.5 text-sm font-semibold hover:bg-black hover:text-white disabled:opacity-30 transition-colors shrink-0 min-h-[44px]"
             >
               {isSubmitting ? '...' : 'Bestätigen'}
